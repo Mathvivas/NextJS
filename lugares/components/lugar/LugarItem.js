@@ -1,6 +1,13 @@
 import { Button } from 'primereact/button'
+import { useRouter } from 'next/router'
 
 const LugarItem = ({ titulo, foto, endereco, id }) => {
+
+    const router = useRouter()
+    const exibirDetalhes = () => {
+        router.push(`/${id}`)
+    }
+
     return (
         <div className="flex flex-column align-items-center m-3 
             border border-round border-1 border-400 p-2">
@@ -13,8 +20,9 @@ const LugarItem = ({ titulo, foto, endereco, id }) => {
                 <address className="text-center text-xs md:text-sm lg:text-base mb-2">
                     {endereco}
                 </address>
-                <Button 
+                <Button
                     label="Ver Detalhes"
+                    onClick={exibirDetalhes}
                 />
             </div>
     )
